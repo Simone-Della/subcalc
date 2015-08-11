@@ -65,7 +65,7 @@ def main():
 
   if question_file == "yes":
     head = "\n"
-    file = open('hosts_subnet.txt', 'w')
+    file = open('hosts__%s.txt' % network.network_address, 'w' )
     for ip in all_hosts:
       host = str(ip) + head
       file.write(str(host))
