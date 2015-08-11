@@ -27,6 +27,8 @@ def main():
   print ("***********************************************")
   print ("*       Subnet Calculator (CIDR) - v0.01      *")
   print ("***********************************************")
+  print ("*       Author: Simone Dellabora              *")
+  print ("***********************************************")
   print ("\n")
 
 # Variable ip address
