@@ -18,6 +18,21 @@ import sys
 import ipaddress
 import pprint
 
+# Function remove file with size equal to 0
+def removeTXT(name_fileTXT):
+  dimension = 0
+  for dirpath, dirs, name_fileTXT in os.walk('.'):
+    for file in name_fileTXT:
+      path = os.path.join(dirpath, file)
+      if os.stat(path).st_size == dimension:
+        os.remove(path)
+def removeXLS(name_fileXLS):
+  dimension = 0
+  for dirpath, dirs, name_fileXLS in os.walk('.'):
+    for file in name_fileXLS:
+      path = os.path.join(dirpath, file)
+      if os.stat(path).st_size == dimension:
+        os.remove(path)
 
 
 def main():
@@ -63,23 +78,51 @@ def main():
 # Print all hosts for subnet on an external file
   print ("\n")
 
+
   question_file = input("Do you want to print all the hosts on an external file ? - yes/no \n")
 
+
+  name_fileTXT = 'hosts__%s.txt' % network.network_address
+  name_fileXLS = 'hosts__%s.xls' % network.network_address
+
+# Open file and write ip of subnet
   if question_file == "yes":
-    head = "\n"
-    file = open('hosts__%s.txt' % network.network_address, 'w' )
-    for ip in all_hosts:
-      host = str(ip) + head
-      file.write(str(host))
-    file.close()
-    print ("ok")
+    print ("\n")
+    print ("-1   format .txt")
+    print ("-2   format .xls")
+    print ("\n")
+    typefile = input("Press 1 or 2\n")
+    if typefile == "1":
+      head = "\n"
+      file = open(name_fileTXT, 'w' )
+      for ip in all_hosts:
+        host = str(ip) + head
+        file.write(str(host))
+      file.close()
+      print ("ok")
+    elif typefile == "2":
+      head = "\n"
+      file = open(name_fileXLS, 'w' )
+      for ip in all_hosts:
+        host = str(ip) + head
+        file.write(str(host))
+      file.close()
+      print ("ok")
+    else:
+      typefile
   elif question_file == "no":
     print ("file not printed!")
   else:
-    print ("Not a valid answer, ")
+    print ("Not a valid answer, restart!")
 
+# remove file if size is equal to 0
+  removeXLS(name_fileXLS)
+  removeTXT(name_fileTXT)
 
   print ("\n")
+  print ("end")
+  print ("\n")
+
 
 
 # Standard boilerplate to call the main() function.
