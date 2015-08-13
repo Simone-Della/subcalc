@@ -96,8 +96,8 @@ def main():
 # Open file and write ip of subnet
   if question_file == "yes":
     print ("\n")
-    print ("-1   format .txt")
-    print ("-2   format .xls")
+    print ("-1   extension .txt")
+    print ("-2   extension .xls")
     print ("\n")
     typefile = input("Press 1 or 2\n")
     if typefile == "1":
