@@ -34,6 +34,7 @@ def removeTXT(name_fileTXT):
       path = os.path.join(dirpath, file)
       if os.stat(path).st_size == dimension:
         os.remove(path)
+        
 def removeXLS(name_fileXLS):
   dimension = 0
   for dirpath, dirs, name_fileXLS in os.walk('.'):
@@ -41,7 +42,6 @@ def removeXLS(name_fileXLS):
       path = os.path.join(dirpath, file)
       if os.stat(path).st_size == dimension:
         os.remove(path)
-
 
 def main():
 
