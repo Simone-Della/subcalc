@@ -17,6 +17,14 @@ import os
 import sys
 import ipaddress
 import pprint
+import platform
+
+# Check version python on system
+def checkVersion():
+  if not (3,) < sys.version_info >= (3,):
+    sys.exit(
+      'ERROR: Subnet Calculator requires Python 3, but found %s.' %
+        platform.python_version())
 
 # Function remove file with size equal to 0
 def removeTXT(name_fileTXT):
@@ -37,7 +45,9 @@ def removeXLS(name_fileXLS):
 
 def main():
 
-# Description start program
+  checkVersion()
+
+#1 Description start program
   print ("\n")
   print ("***********************************************")
   print ("*       Subnet Calculator (CIDR) - v0.01      *")
@@ -78,9 +88,7 @@ def main():
 # Print all hosts for subnet on an external file
   print ("\n")
 
-
   question_file = input("Do you want to print all the hosts on an external file ? - yes/no \n")
-
 
   name_fileTXT = 'hosts__%s.txt' % network.network_address
   name_fileXLS = 'hosts__%s.xls' % network.network_address
@@ -122,8 +130,6 @@ def main():
   print ("\n")
   print ("end")
   print ("\n")
-
-
 
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
